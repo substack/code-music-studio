@@ -22,7 +22,8 @@
     "strftime": "^0.8.0",
     "through": "^2.3.4",
     "trumpet": "~1.6.3",
-    "webaudio": "~2.0.0"
+    "webaudio": "~2.0.0",
+    "browser-module-sandbox": "juliangruber/browser-module-sandbox#44d1248c71db29e77d2fe0a4eac21fc79fe1de4c"
   },
   "devDependencies": {
     "browserify": "^3.33.0",

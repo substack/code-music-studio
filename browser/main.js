@@ -78,10 +78,33 @@ code.addEventListener('keydown', function (ev) {
     }
 });
 
-observable.input(code)(function (source) {
+var sandbox = require('browser-module-sandbox')({
+    cdn: 'http://wzrd.in',
+    container: document.getElementById('sandbox'),
+    iframeHead: '',
+    iframeBody: '',
+    iframeStyle: ''
+});
+
+sandbox.on('bundleStart', function () {
+    console.log('bundle start');
+});
+
+sandbox.on('bundleEnd', function (html) {
+    console.log('bundle end');
+    var source = html.script;
     try { music = Function(source)() }
     catch (err) { return console.log(err) }
     ascope.draw(music);
+});
+
+observable.input(code)(function (source) {
+    var pre = [
+      'var _i = document.querySelector("#sandbox iframe");',
+      'var _b = _i && _i.contentDocument.querySelector("body")',
+      'var display = _b || document.body;'
+    ].join('\n')
+    sandbox.bundle(pre + source);
 });
 
 setInterval(function f () {

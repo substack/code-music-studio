@@ -10,9 +10,9 @@
         position: absolute;
         left: 0px;
         right: 50%;
-        bottom: 0px;
+        top: 33%;
         background-color: purple;
-        height: 50%;
+        height: 34%;
       }
       #code {
         position: absolute;
@@ -38,7 +38,15 @@
         top: 0px;
         left: 0px;
         right: 50%;
-        height: 50%;
+        height: 33%;
+      }
+      #sandbox {
+        position: absolute;
+        bottom: 0px;
+        left: 0px;
+        right: 50%;
+        background-color: white;
+        height: 33%;
       }
       textarea {
         background-color: rgb(40,40,40);
@@ -85,7 +93,9 @@
   <body>
     <div id="ascope"></div>
     <div id="fscope"></div>
+    <div id="sandbox"></div>
     <textarea id="code">return function (t) {
+  display.innerHTML = 'sinus 441 hz';
   return sin(441);
   function sin (x) { return Math.sin(2 * Math.PI * t * x) }
 }
