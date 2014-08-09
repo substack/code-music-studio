@@ -22,7 +22,8 @@
     "strftime": "^0.8.0",
     "through": "^2.3.4",
     "trumpet": "~1.6.3",
-    "webaudio": "~2.0.0"
+    "webaudio": "~2.0.0",
+    "webworkify": "~0.1.0"
   },
   "devDependencies": {
     "browserify": "^3.33.0",
