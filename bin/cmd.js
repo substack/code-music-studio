@@ -142,7 +142,7 @@ server.on('listening', function () {
     console.log('listening on http://localhost:' + server.address().port);
 });
 
-var shoe = require('shoe');
+var wsock = require('websocket-stream');
 var net = require('net');
 var split = require('split');
 var state = argv.state || {};
@@ -160,11 +160,10 @@ if (argv.input) {
     });
     input.pipe(split()).pipe(setter);
     
-    var sock = shoe(function (stream) {
+    wsock.createServer({ server: server }, function (stream) {
         input.pipe(stream);
         stream.write(JSON.stringify(state) + '\n');
     });
-    sock.install(server, '/sock');
 }
 
 function readStream (file) {
