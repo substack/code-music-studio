@@ -79,8 +79,8 @@ code.addEventListener('keydown', function (ev) {
 });
 
 var state = {};
-var shoe = require('shoe');
-var stream = shoe('/sock');
+var wsock = require('websocket-stream');
+var stream = wsock('ws://'+location.host)
 
 var split = require('split');
 var through = require('through');
