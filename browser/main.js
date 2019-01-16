@@ -89,7 +89,7 @@ stream.pipe(split()).pipe(through(function (line) {
     try { var row = JSON.parse(line) }
     catch (err) { return }
     if (!row || typeof row !== 'object') return;
-    
+
     var keys = Object.keys(row);
     for (var i = 0; i < keys.length; i++) {
         var key = keys[i]
@@ -122,3 +122,19 @@ var b = baudio(function (t) {
     return x;
 });
 b.play();
+
+function onMIDIMessage(message) {
+    var midiData = message.data;
+    var channel = midiData[0];
+    var note = midiData[1];
+    var value = midiData[2];
+    state[channel] = state[channel] || [];
+    state[channel][note] = value;
+};
+
+navigator.requestMIDIAccess().then(function(midiAccess) {
+  var inputs = midiAccess.inputs.values();
+  for (var input = inputs.next(); input && !input.done; input = inputs.next()) {
+      input.value.onmidimessage = onMIDIMessage;
+  }
+}).catch(function (e) { console.log(e) });

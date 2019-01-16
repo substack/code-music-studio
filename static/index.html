@@ -85,7 +85,7 @@
   <body>
     <div id="ascope"></div>
     <div id="fscope"></div>
-    <textarea id="code">return function (t) {
+    <textarea id="code">return function (t, state) {
   return 0
 
   function tri_ (x,t) { return Math.abs(1 - t % (1/x) * x * 2) * 2 - 1 }
@@ -107,7 +107,7 @@
       <a class="history-link"><button>history</button></a>
       <a href="/-/recent"><button>recent</button></a>
       <a href="/-/help"><button>help</button></a>
-      
+
       <button id="play">pause</button>
     </div>
     <script src="/-/bundle.js"></script>
