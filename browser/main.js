@@ -46,10 +46,16 @@ var play = document.querySelector('#play');
 play.addEventListener('click', togglePlay);
 ascope.on('click', togglePlay);
 
-var paused = false;
+var paused = true;
+var b = null;
+
 function togglePlay () {
     paused = !paused;
     play.textContent = paused ? 'play' : 'pause';
+    if (!b) {
+        b = createBaudio();
+        b.play();
+    }
 }
 
 window.addEventListener('resize', function (ev) {
@@ -114,11 +120,12 @@ var time = 0;
 var data = new Float32Array(4000);
 var dataIx = 0;
 
-var b = baudio(function (t) {
-    time = t;
-    if (paused) return 0;
-    var x = music(t, state);
-    data[dataIx++ % data.length] = x;
-    return x;
-});
-b.play();
+function createBaudio () {
+    return baudio(function (t) {
+        time = t;
+        if (paused) return 0;
+        var x = music(t, state);
+        data[dataIx++ % data.length] = x;
+        return x;
+    });
+}
