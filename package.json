@@ -15,7 +15,7 @@
     "hyperquest": "^0.3.0",
     "hyperspace": "^0.9.2",
     "keycode": "^0.3.0",
-    "level": "^4.0.0",
+    "level": "^6.0.1",
     "marked": "^0.3.2",
     "minimist": "~0.0.8",
     "observable": "~2.1.3",
